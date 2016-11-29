@@ -196,7 +196,6 @@ robj *createZiplistObject(void) {
 }
 
 robj *createSetObject(void) {
-    serverLog(LL_NOTICE,"set Object Create");
     dict *d = dictCreate(&setDictType,NULL);
     robj *o = createObject(OBJ_SET,d);
     o->encoding = OBJ_ENCODING_HT;

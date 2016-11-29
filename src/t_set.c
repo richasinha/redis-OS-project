@@ -53,8 +53,6 @@ robj *setTypeCreate(sds value) {
  * returned, otherwise the new element is added and 1 is returned. */
 int setTypeAdd(robj *subject, sds value) {
     long long llval;
-    printf("Printf mai aa gaya\n");
-    serverLog(LL_NOTICE,"Mai aa gaya");
     if ((subject->encoding == OBJ_ENCODING_HT) && (!sparseInUse)) {
         dict *ht = subject->ptr;
         dictEntry *de = dictAddRaw(ht,value,NULL);
@@ -86,11 +84,11 @@ int setTypeAdd(robj *subject, sds value) {
     } else if ((subject->encoding == OBJ_ENCODING_SPM) || (sparseInUse)) {
         //Make sure to initialize and allocate a hashtable
         dict *ht = subject->ptr;
-
+        char keyCopy[sizeof(ulong)];
+        memcpy(keyCopy, value, sizeof(value)+1);
         HTItem *bck;
         bck = HashInsert(ht->spmHT, PTR_KEY(ht->spmHT,value), 0);
         if(bck != NULL) {
-            serverLog(LL_NOTICE,"ban gaya");
             return 1;       
         }
     } else {
@@ -102,16 +100,26 @@ int setTypeAdd(robj *subject, sds value) {
 
 int setTypeRemove(robj *setobj, sds value) {
     long long llval;
-    if (setobj->encoding == OBJ_ENCODING_HT) {
+    if ((setobj->encoding == OBJ_ENCODING_HT) && (!sparseInUse)) {
         if (dictDelete(setobj->ptr,value) == DICT_OK) {
             if (htNeedsResize(setobj->ptr)) dictResize(setobj->ptr);
             return 1;
         }
-    } else if (setobj->encoding == OBJ_ENCODING_INTSET) {
+    } else if ((setobj->encoding == OBJ_ENCODING_INTSET)&& (!sparseInUse)) {
         if (isSdsRepresentableAsLongLong(value,&llval) == C_OK) {
             int success;
             setobj->ptr = intsetRemove(setobj->ptr,llval,&success);
             if (success) return 1;
+        }
+    } else if (sparseInUse) {
+        dict *d = setobj->ptr;
+        char keyCopy[sizeof(ulong)];
+        memcpy(keyCopy, value, sizeof(value)+1);
+        if ((HashDelete(d->spmHT, PTR_KEY(d->spmHT,keyCopy)) == 1)) {
+            serverLog(LL_NOTICE,"deleted");
+            return 1;
+        } else {
+            serverLog(LL_NOTICE, "could not delete");
         }
     } else {
         serverPanic("Unknown set encoding");
@@ -307,12 +315,14 @@ void sremCommand(client *c) {
     int j, deleted = 0, keyremoved = 0;
 
     if ((set = lookupKeyWriteOrReply(c,c->argv[1],shared.czero)) == NULL ||
-        checkType(c,set,OBJ_SET)) return;
-
+        checkType(c,set,OBJ_SET)) {
+        return;
+    }
+    
     for (j = 2; j < c->argc; j++) {
         if (setTypeRemove(set,c->argv[j]->ptr)) {
             deleted++;
-            if (setTypeSize(set) == 0) {
+            if ((!sparseInUse) && (setTypeSize(set) == 0)) {
                 dbDelete(c->db,c->argv[1]);
                 keyremoved = 1;
                 break;

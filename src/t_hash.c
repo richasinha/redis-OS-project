@@ -30,7 +30,7 @@
 #include "server.h"
 #include <math.h>
 
-int sparseInUse = 1;
+int sparseInUse = 0;
 
 /*-----------------------------------------------------------------------------
  * Hash type API
@@ -238,7 +238,7 @@ int hashTypeSet(robj *o, sds field, sds value, int flags) {
         /* Check if the ziplist needs to be converted to a hash table */
         if (hashTypeLength(o) > server.hash_max_ziplist_entries)
             hashTypeConvert(o, OBJ_ENCODING_HT);
-    } else if ((o->encoding == OBJ_ENCODING_HT) && (!sparseInUse)) {
+    } else if ((o->encoding == OBJ_ENCODING_HT) || (sparseInUse==2)) {
         dictEntry *de = dictFind(o->ptr,field);
         if (de) {
             sdsfree(dictGetVal(de));
@@ -265,7 +265,7 @@ int hashTypeSet(robj *o, sds field, sds value, int flags) {
             }
             dictAdd(o->ptr,f,v);
         }
-    } else if ((o->encoding == OBJ_ENCODING_SPM) || (sparseInUse) ) {
+    } else if ((o->encoding == OBJ_ENCODING_SPM) || (sparseInUse == 1) ) {
         dict *d = o->ptr;
         char keyCopy[sizeof(ulong)];
         memcpy(keyCopy, field, sizeof(field)+1);
@@ -341,6 +341,8 @@ unsigned long hashTypeLength(const robj *o) {
         length = ziplistLen(o->ptr) / 2;
     } else if (o->encoding == OBJ_ENCODING_HT) {
         length = dictSize((const dict*)o->ptr);
+    } else if (o->encoding == OBJ_ENCODING_SPM) {
+        length = 0;
     } else {
         serverPanic("Unknown hash encoding");
     }
@@ -705,8 +707,10 @@ static void addHashFieldToReply(client *c, robj *o, sds field) {
        HTItem *item; 
        item = HashFind(d->spmHT, PTR_KEY(d->spmHT, keyCopy));
        value = item->data;
-       if(value == NULL)
+       if(value == NULL) {
             addReply(c, shared.nullbulk);
+            printf("The value is null");
+       }
        else {
             addReplyBulkCBuffer(c, value, sdslen(value));
        }          

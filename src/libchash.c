@@ -126,6 +126,7 @@
 #include <netinet/in.h>   /* for reading/writing hashtables */
 #include <assert.h>
 #include "libchash.h"     /* all the types */
+#include "zmalloc.h"
 
    /* if keys are stored directly but cchKey is less than sizeof(ulong), */
    /* this cuts off the bits at the end */
@@ -152,12 +153,12 @@ char grgKeyTruncMask[sizeof(ulong)][sizeof(ulong)];
       (keyTo) = (keyFrom);                     /* just copy pointer or info */\
    else if ( (ht)->cchKey == NULL_TERMINATED )        /* copy 0-term.ed str */\
    {                                                                          \
-      (keyTo) = (ulong)HTsmalloc( WORD_ROUND(strlen((char *)(keyFrom))+1) );  \
+      (keyTo) = (ulong)zmalloc( WORD_ROUND(strlen((char *)(keyFrom))+1) );  \
       strcpy((char *)(keyTo), (char *)(keyFrom));                             \
    }                                                                          \
    else                                                                       \
    {                                                                          \
-      (keyTo) = (ulong) HTsmalloc( WORD_ROUND((ht)->cchKey) );                \
+      (keyTo) = (ulong) zmalloc( WORD_ROUND((ht)->cchKey) );                \
       memcpy( (char *)(keyTo), (char *)(keyFrom), (ht)->cchKey);              \
    }                                                                          \
    while ( 0 )
@@ -272,7 +273,7 @@ static void *HTscalloc(unsigned long size)
 static void *HTsrealloc(void *ptr, unsigned long new_size, long delta)
 {
    if ( ptr == NULL )
-      return HTsmalloc(new_size);
+      return zmalloc(new_size);
    ptr = realloc(ptr, new_size);
    if ( !ptr && new_size > 0 )
    {
@@ -489,7 +490,7 @@ static ulong SparseAllocate(SparseBin **pbinSparse, ulong cBuckets)
 {
    int cGroups = SPARSE_GROUPS(cBuckets);
 
-   *pbinSparse = (SparseBin *) HTscalloc(sizeof(**pbinSparse) * cGroups);
+   *pbinSparse = (SparseBin *) zcalloc(sizeof(**pbinSparse) * cGroups);
    return cGroups << LOG_LOW_BIN_SIZE;
 }
 
@@ -553,9 +554,8 @@ static SparseBucket *SparseInsert(SparseBin *binSparse, SparseBucket *bckInsert,
    offset = SPARSE_POS_TO_OFFSET(binSparse->bmOccupied,
 				 MOD2(location, LOG_LOW_BIN_SIZE));
    binSparse->binSparse = (SparseBucket *) 
-      HTsrealloc(binSparse->binSparse,
-		 sizeof(*binSparse->binSparse) * ++binSparse->cOccupied,
-		 sizeof(*binSparse->binSparse));
+      zrealloc(binSparse->binSparse,
+		 sizeof(*binSparse->binSparse) * ++binSparse->cOccupied);
    memmove(binSparse->binSparse + offset+1,
 	   binSparse->binSparse + offset,
 	   (binSparse->cOccupied-1 - offset) * sizeof(*binSparse->binSparse));
@@ -629,7 +629,7 @@ static ulong SparseRead(FILE *fp, SparseBin **pbinSparse)
       (*pbinSparse)[i].cOccupied =
 	 SPARSE_POS_TO_OFFSET((*pbinSparse)[i].bmOccupied,1<<LOG_LOW_BIN_SIZE);
       (*pbinSparse)[i].binSparse =
-	 (SparseBucket *) HTsmalloc(sizeof(*((*pbinSparse)[i].binSparse)) *
+	 (SparseBucket *) zmalloc(sizeof(*((*pbinSparse)[i].binSparse)) *
 				    (*pbinSparse)[i].cOccupied);
    }
    return cBuckets;
@@ -682,8 +682,8 @@ static void DenseClear(DenseBin *bin, ulong cBuckets)
 
 static ulong DenseAllocate(DenseBin **pbin, ulong cBuckets)
 {
-   *pbin = (DenseBin *) HTsmalloc(sizeof(*pbin));
-   (*pbin)->rgBuckets = (DenseBucket *) HTsmalloc(sizeof(*(*pbin)->rgBuckets)
+   *pbin = (DenseBin *) zmalloc(sizeof(*pbin));
+   (*pbin)->rgBuckets = (DenseBucket *) zmalloc(sizeof(*(*pbin)->rgBuckets)
 						  * cBuckets);
    DenseClear(*pbin, cBuckets);
    return cBuckets;
@@ -1161,14 +1161,14 @@ HashTable *AllocateHashTable(int cchKey, int fSaveKeys)
 {
    HashTable *ht;
 
-   ht = (HashTable *) HTsmalloc(sizeof(*ht));   /* set everything to 0 */
+   ht = (HashTable *) zmalloc(sizeof(*ht));   /* set everything to 0 */
    ht->cBuckets = Table(Allocate)(&ht->table, MIN_HASH_SIZE);
    ht->cchKey = cchKey <= 0 ? NULL_TERMINATED : cchKey;
    ht->cItems = 0;
    ht->cDeletedItems = 0;
    ht->fSaveKeys = fSaveKeys;
    ht->cDeltaGoalSize = 0;
-   ht->iter = HTsmalloc( sizeof(TableIterator) );
+   ht->iter = zmalloc( sizeof(TableIterator) );
 
    ht->fpData = NULL;                           /* set by HashLoad, maybe */
    ht->bckData.data = (ulong) NULL;             /* this must be done */
@@ -1422,7 +1422,7 @@ static HashTable *HashDoLoad(FILE *fp, char * (*dataRead)(FILE *, int),
    ht->cBuckets = Table(Read)(fp, &ht->table);    /* next is the table info */
 
    READ_UL(fp, cchKey);
-   rgchKeys = (char *) HTsmalloc( cchKey );  /* stores all the keys */
+   rgchKeys = (char *) zmalloc( cchKey );  /* stores all the keys */
    fread(rgchKeys, 1, cchKey, fp);
       /* We use the table iterator so we don't try to LOAD_AND_RETURN */
    for ( bck = Table(FirstBucket)(ht->iter, ht->table, ht->cBuckets);

@@ -92,7 +92,7 @@ CHILD_INFO_MAGIC	server.h	813;"	d
 CHILD_INFO_TYPE_AOF	server.h	815;"	d
 CHILD_INFO_TYPE_RDB	server.h	814;"	d
 CLEAR_BITMAP	libchash.c	188;"	d	file:
-CLIENTS_CRON_MIN_ITERATIONS	server.c	831;"	d	file:
+CLIENTS_CRON_MIN_ITERATIONS	server.c	833;"	d	file:
 CLIENT_ASKING	server.h	221;"	d
 CLIENT_BLOCKED	server.h	215;"	d
 CLIENT_CLOSE_AFTER_REPLY	server.h	217;"	d
@@ -296,7 +296,7 @@ D	quicklist.c	63;"	d	file:
 D	quicklist.c	65;"	d	file:
 DEBUG	Makefile	/^DEBUG=-g -ggdb$/;"	m
 DEG_TO_RAD	geohash_helper.c	/^const double DEG_TO_RAD = 0.017453292519943295769236907684886;$/;"	v
-DELETED	libchash.h	164;"	d
+DELETED	libchash.h	162;"	d
 DENSE_IS_EMPTY	libchash.c	673;"	d	file:
 DENSE_SET_EMPTY	libchash.c	674;"	d	file:
 DENSE_SET_OCCUPIED	libchash.c	675;"	d	file:
@@ -330,7 +330,7 @@ EARTH_RADIUS_IN_METERS	geohash_helper.c	/^const double EARTH_RADIUS_IN_METERS = 
 ECCENT	geohash_helper.c	46;"	d	file:
 EDIS_CFLAGS	Makefile	/^	echo REDIS_CFLAGS=$(REDIS_CFLAGS) >> .make-settings$/;"	m
 EDIS_LDFLAGS	Makefile	/^	echo REDIS_LDFLAGS=$(REDIS_LDFLAGS) >> .make-settings$/;"	m
-EMPTY	libchash.h	177;"	d
+EMPTY	libchash.h	175;"	d
 EMPTYDB_ASYNC	server.h	1626;"	d
 EMPTYDB_NO_FLAGS	server.h	1625;"	d
 ENDCOLOR	Makefile	/^ENDCOLOR="\\033[0m"$/;"	m
@@ -341,7 +341,7 @@ EVPOOL_CACHED_SDS_SIZE	evict.c	52;"	d	file:
 EVPOOL_SIZE	evict.c	51;"	d	file:
 EntriesUpto	libchash.c	/^static HTOffset EntriesUpto(HTBitmapPart *bm, int i)$/;"	f	file:
 EvictionPoolLRU	evict.c	/^static struct evictionPoolEntry *EvictionPoolLRU;$/;"	v	typeref:struct:evictionPoolEntry	file:
-FAST_DELETE	libchash.h	148;"	d
+FAST_DELETE	libchash.h	146;"	d
 FILL_MAX	quicklist.c	116;"	d	file:
 FINAL_CFLAGS	Makefile	/^FINAL_CFLAGS=$(STD) $(WARN) $(OPT) $(DEBUG) $(CFLAGS) $(REDIS_CFLAGS)$/;"	m
 FINAL_LDFLAGS	Makefile	/^FINAL_LDFLAGS=$(LDFLAGS) $(REDIS_LDFLAGS) $(DEBUG)$/;"	m
@@ -461,13 +461,13 @@ HashFindOrInsertItem	libchash.c	/^HTItem *HashFindOrInsertItem(HashTable *ht, HT
 HashFirstBucket	libchash.c	/^HTItem *HashFirstBucket(HashTable *ht)$/;"	f
 HashInsert	libchash.c	/^HTItem *HashInsert(HashTable *ht, ulong key, ulong data)$/;"	f
 HashInsertItem	libchash.c	/^HTItem *HashInsertItem(HashTable *ht, HTItem *pItem)$/;"	f
-HashKeySize	libchash.h	217;"	d
+HashKeySize	libchash.h	215;"	d
 HashLoad	libchash.c	/^HashTable *HashLoad(FILE *fp, char * (*dataRead)(FILE *, int))$/;"	f
 HashLoadKeys	libchash.c	/^HashTable *HashLoadKeys(FILE *fp, char * (*dataRead)(FILE *, int))$/;"	f
 HashNextBucket	libchash.c	/^HTItem *HashNextBucket(HashTable *ht)$/;"	f
 HashSave	libchash.c	/^void HashSave(FILE *fp, HashTable *ht, int (*dataWrite)(FILE *, char *))$/;"	f
 HashSetDeltaGoalSize	libchash.c	/^int HashSetDeltaGoalSize(HashTable *ht, int delta)$/;"	f
-HashSize	libchash.h	218;"	d
+HashSize	libchash.h	216;"	d
 HashTable	libchash.h	/^typedef struct HashTable {$/;"	s
 HashTable	libchash.h	/^} HashTable;$/;"	t	typeref:struct:HashTable
 HelloHCopy_RedisCommand	modules/helloworld.c	/^int HelloHCopy_RedisCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {$/;"	f
@@ -512,12 +512,12 @@ INT24_MIN	ziplist.c	136;"	d	file:
 INTSET_ENC_INT16	intset.c	40;"	d	file:
 INTSET_ENC_INT32	intset.c	41;"	d	file:
 INTSET_ENC_INT64	intset.c	42;"	d	file:
-IS_BCK_DELETED	libchash.h	165;"	d
-IS_BCK_DELETED	libchash.h	169;"	d
+IS_BCK_DELETED	libchash.h	163;"	d
+IS_BCK_DELETED	libchash.h	167;"	d
 Insert	libchash.c	/^static HTItem *Insert(HashTable *ht, ulong key, ulong data, int fOverwrite)$/;"	f	file:
-JUMP	libchash.h	142;"	d
+JUMP	libchash.h	140;"	d
 KEY_CMP	libchash.c	143;"	d	file:
-KEY_PTR	libchash.h	222;"	d
+KEY_PTR	libchash.h	220;"	d
 KEY_TRUNC	libchash.c	133;"	d	file:
 LATENCY_DIST_DEFAULT_INTERVAL	redis-cli.c	1511;"	d	file:
 LATENCY_GRAPH_COLS	latency.c	515;"	d	file:
@@ -545,11 +545,11 @@ LL_RAW	server.h	312;"	d
 LL_VERBOSE	server.h	309;"	d
 LL_WARNING	server.h	311;"	d
 LOAD_AND_RETURN	libchash.c	206;"	d	file:
-LOG_BM_WORDS	libchash.h	137;"	d
+LOG_BM_WORDS	libchash.h	135;"	d
 LOG_LOW_BIN_SIZE	libchash.c	377;"	d	file:
 LOG_MAX_LEN	server.h	92;"	d
+LOG_WORD_SIZE	libchash.h	126;"	d
 LOG_WORD_SIZE	libchash.h	128;"	d
-LOG_WORD_SIZE	libchash.h	130;"	d
 LONG_STR_SIZE	server.h	174;"	d
 LOOKUP_NONE	server.h	1614;"	d
 LOOKUP_NOTOUCH	server.h	1615;"	d
@@ -576,7 +576,7 @@ LZF_STATE	lzfP.h	/^typedef LZF_HSLOT LZF_STATE[1 << (HLOG)];$/;"	t
 LZF_STATE_ARG	lzfP.h	109;"	d
 LZF_USE_OFFSETS	lzfP.h	145;"	d
 LZF_VERSION	lzf.h	49;"	d
-MAGIC_KEY	libchash.h	124;"	d
+MAGIC_KEY	libchash.h	122;"	d
 MAKECOLOR	Makefile	/^MAKECOLOR="\\033[32;1m"$/;"	m
 MALLOC	Makefile	/^	MALLOC=jemalloc$/;"	m
 MALLOC	Makefile	/^	MALLOC=libc$/;"	m
@@ -612,7 +612,7 @@ MIGRATE_SOCKET_CACHE_ITEMS	cluster.c	4632;"	d	file:
 MIGRATE_SOCKET_CACHE_TTL	cluster.c	4633;"	d	file:
 MIN_COMPRESS_BYTES	quicklist.c	54;"	d	file:
 MIN_COMPRESS_IMPROVE	quicklist.c	59;"	d	file:
-MIN_HASH_SIZE	libchash.h	157;"	d
+MIN_HASH_SIZE	libchash.h	155;"	d
 MOD2	libchash.c	181;"	d	file:
 MODBIT	libchash.c	184;"	d	file:
 MODULE_LOOKUP_CACHE_SIZE	module.c	2577;"	d	file:
@@ -640,9 +640,9 @@ NOTIFY_STRING	server.h	409;"	d
 NOTIFY_ZSET	server.h	413;"	d
 NULL_TERMINATED	libchash.c	139;"	d	file:
 NextPow2	libchash.c	/^static ulong NextPow2(ulong x)    \/* returns next power of 2 > x, or 2^31 *\/$/;"	f	file:
-OBJ_COMPUTE_SIZE_DEF_SAMPLES	object.c	702;"	d	file:
+OBJ_COMPUTE_SIZE_DEF_SAMPLES	object.c	714;"	d	file:
 OBJ_ENCODING_EMBSTR	server.h	542;"	d
-OBJ_ENCODING_EMBSTR_SIZE_LIMIT	object.c	116;"	d	file:
+OBJ_ENCODING_EMBSTR_SIZE_LIMIT	object.c	118;"	d	file:
 OBJ_ENCODING_HT	server.h	536;"	d
 OBJ_ENCODING_INT	server.h	535;"	d
 OBJ_ENCODING_INTSET	server.h	540;"	d
@@ -676,7 +676,7 @@ OBJ_STRING	server.h	438;"	d
 OBJ_ZSET	server.h	441;"	d
 OBJ_ZSET_MAX_ZIPLIST_ENTRIES	server.h	337;"	d
 OBJ_ZSET_MAX_ZIPLIST_VALUE	server.h	338;"	d
-OCCUPANCY_PCT	libchash.h	154;"	d
+OCCUPANCY_PCT	libchash.h	152;"	d
 OK	quicklist.c	1429;"	d	file:
 OPT	Makefile	/^OPT=$(OPTIMIZATION)$/;"	m
 OPTIMIZATION	Makefile	/^OPTIMIZATION?=-O2$/;"	m
@@ -686,6 +686,7 @@ OPVAL_VALID_LL	t_zset.c	1802;"	d	file:
 OUTPUT_CSV	redis-cli.c	61;"	d	file:
 OUTPUT_RAW	redis-cli.c	60;"	d	file:
 OUTPUT_STANDARD	redis-cli.c	59;"	d	file:
+PATH	redis.py	/^PATH = "\/home\/richie_rich\/OSProj\/redis-OS-project\/src\/redis-cli"$/;"	v
 PDP_ENDIAN	config.h	143;"	d
 PIPEMODE_WRITE_LOOP_MAX_BYTES	redis-cli.c	1769;"	d	file:
 PREFIX	Makefile	/^PREFIX?=\/usr\/local$/;"	m
@@ -709,8 +710,8 @@ PSYNC_NOT_SUPPORTED	replication.c	1282;"	d	file:
 PSYNC_WAIT_REPLY	replication.c	1279;"	d	file:
 PSYNC_WRITE_ERROR	replication.c	1278;"	d	file:
 PT	Makefile	/^	echo OPT=$(OPT) >> .make-settings$/;"	m
+PTR_KEY	libchash.h	222;"	d
 PTR_KEY	libchash.h	224;"	d
-PTR_KEY	libchash.h	226;"	d
 PrintHashTable	libchash.c	/^ulong PrintHashTable(HashTable *ht, double time, int iForm)$/;"	f
 QL_TEST_VERBOSE	quicklist.c	1447;"	d	file:
 QUICKLIST_HEAD	quicklist.h	100;"	d
@@ -863,8 +864,8 @@ REDIS_CLI_NAME	Makefile	/^REDIS_CLI_NAME=redis-cli$/;"	m
 REDIS_CLI_OBJ	Makefile	/^REDIS_CLI_OBJ=anet.o adlist.o redis-cli.o zmalloc.o release.o anet.o ae.o crc64.o$/;"	m
 REDIS_CLI_RCFILE_DEFAULT	redis-cli.c	67;"	d	file:
 REDIS_CLI_RCFILE_ENV	redis-cli.c	66;"	d	file:
-REDIS_COMPARE_BINARY	object.c	484;"	d	file:
-REDIS_COMPARE_COLL	object.c	485;"	d	file:
+REDIS_COMPARE_BINARY	object.c	496;"	d	file:
+REDIS_COMPARE_COLL	object.c	497;"	d	file:
 REDIS_CONFIG_REWRITE_SIGNATURE	config.c	1355;"	d	file:
 REDIS_GIT_DIRTY	release.h	2;"	d
 REDIS_GIT_SHA1	release.h	1;"	d
@@ -1046,7 +1047,7 @@ RedisModule_OnLoad	modules/helloworld.c	/^int RedisModule_OnLoad(RedisModuleCtx 
 RedisModule_OnLoad	modules/testmodule.c	/^int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {$/;"	f
 RedisTrib	redis-trib.rb	/^class RedisTrib$/;"	c
 Rehash	libchash.c	/^static HTItem *Rehash(HashTable *ht, ulong cNewBuckets, HTItem *bckWatch)$/;"	f	file:
-SAMEKEY_OVERWRITE	libchash.h	151;"	d
+SAMEKEY_OVERWRITE	libchash.h	149;"	d
 SA_ONSTACK	debug.c	48;"	d	file:
 SDS_HDR	sds.h	83;"	d
 SDS_HDR_VAR	sds.h	82;"	d
@@ -1108,17 +1109,17 @@ SENTINEL_TILT_PERIOD	sentinel.c	78;"	d	file:
 SENTINEL_TILT_TRIGGER	sentinel.c	77;"	d	file:
 SET3	rand.c	61;"	d	file:
 SETLOW	rand.c	62;"	d	file:
-SET_BCK_DELETED	libchash.h	166;"	d
-SET_BCK_DELETED	libchash.h	170;"	d
+SET_BCK_DELETED	libchash.h	164;"	d
+SET_BCK_DELETED	libchash.h	168;"	d
 SET_BITMAP	libchash.c	187;"	d	file:
 SET_ERRNO	lzf_d.c	40;"	d	file:
 SET_ERRNO	lzf_d.c	43;"	d	file:
 SET_OP_DIFF	server.h	349;"	d
-SET_OP_DIFF	t_set.c	949;"	d	file:
+SET_OP_DIFF	t_set.c	951;"	d	file:
 SET_OP_INTER	server.h	350;"	d
-SET_OP_INTER	t_set.c	950;"	d	file:
+SET_OP_INTER	t_set.c	952;"	d	file:
 SET_OP_UNION	server.h	348;"	d
-SET_OP_UNION	t_set.c	948;"	d	file:
+SET_OP_UNION	t_set.c	950;"	d	file:
 SHA1Final	sha1.c	/^void SHA1Final(unsigned char digest[20], SHA1_CTX* context)$/;"	f
 SHA1HANDSOFF	sha1.c	22;"	d	file:
 SHA1Init	sha1.c	/^void SHA1Init(SHA1_CTX* context)$/;"	f
@@ -1152,11 +1153,11 @@ SPARKLINE_NO_FLAGS	sparkline.h	46;"	d
 SPARSE_BUCKET	libchash.c	473;"	d	file:
 SPARSE_GROUPS	libchash.c	378;"	d	file:
 SPARSE_POS_TO_OFFSET	libchash.c	472;"	d	file:
-SPOP_MOVE_STRATEGY_MUL	t_set.c	425;"	d	file:
+SPOP_MOVE_STRATEGY_MUL	t_set.c	427;"	d	file:
 SPT	setproctitle.c	/^} SPT;$/;"	v	typeref:struct:__anon3	file:
 SPT_MAXTITLE	setproctitle.c	213;"	d	file:
 SPT_MIN	setproctitle.c	67;"	d	file:
-SRANDMEMBER_SUB_STRATEGY_MUL	t_set.c	639;"	d	file:
+SRANDMEMBER_SUB_STRATEGY_MUL	t_set.c	641;"	d	file:
 SRCCOLOR	Makefile	/^SRCCOLOR="\\033[33m"$/;"	m
 SRI_FAILOVER_IN_PROGRESS	sentinel.c	61;"	d	file:
 SRI_FORCE_FAILOVER	sentinel.c	67;"	d	file:
@@ -1178,7 +1179,7 @@ STATS_METRIC_NET_INPUT	server.h	164;"	d
 STATS_METRIC_NET_OUTPUT	server.h	165;"	d
 STATS_METRIC_SAMPLES	server.h	162;"	d
 STD	Makefile	/^STD=-std=c99 -pedantic -DREDIS_STATIC=''$/;"	m
-STORES_PTR	libchash.h	220;"	d
+STORES_PTR	libchash.h	218;"	d
 STRICT_ALIGN	lzfP.h	175;"	d
 STRICT_ALIGN	lzfP.h	176;"	d
 STRICT_ALIGN	lzfP.h	82;"	d
@@ -1220,7 +1221,7 @@ TYPE_SET	redis-cli.c	1931;"	d	file:
 TYPE_STRING	redis-cli.c	1929;"	d	file:
 TYPE_ZSET	redis-cli.c	1933;"	d	file:
 Table	libchash.h	/^typedef struct Table(Bin)       Table;        \/* Expands to SparseBin, etc *\/$/;"	t	typeref:struct:
-Table	libchash.h	145;"	d
+Table	libchash.h	143;"	d
 TableIterator	libchash.h	/^typedef struct Table(Iterator)  TableIterator;$/;"	t	typeref:struct:
 TestAssertIntegerReply	modules/testmodule.c	/^int TestAssertIntegerReply(RedisModuleCtx *ctx, RedisModuleCallReply *reply, long long expected) {$/;"	f
 TestAssertStringReply	modules/testmodule.c	/^int TestAssertStringReply(RedisModuleCtx *ctx, RedisModuleCallReply *reply, char *str, size_t len) {$/;"	f
@@ -2039,6 +2040,8 @@ count	cluster.h	/^    uint16_t count;     \/* Only used for some kind of message
 count	quicklist.h	/^    unsigned int count : 16;     \/* count of items in ziplist *\/$/;"	m	struct:quicklistNode
 count	quicklist.h	/^    unsigned long count;        \/* total count of all entries in all ziplists *\/$/;"	m	struct:quicklist
 count	redis-cli.c	/^    long long count; \/* Number of samples in this interval. *\/$/;"	m	struct:distsamples	file:
+count	redis.py	/^    count = count + 1$/;"	v
+count	redis.py	/^count = 0$/;"	v
 count	server.h	/^    int count;              \/* Total number of MULTI commands *\/$/;"	m	struct:multiState
 count	sha1.h	/^    uint32_t count[2];$/;"	m	struct:__anon1
 countKeysInSlot	db.c	/^unsigned int countKeysInSlot(unsigned int hashslot) {$/;"	f
@@ -3350,6 +3353,8 @@ overhead_ht_main	server.h	/^        size_t overhead_ht_main;$/;"	m	struct:redisM
 overhead_total	server.h	/^    size_t overhead_total;$/;"	m	struct:redisMemOverhead
 owtype	bitops.c	/^    int owtype;         \/* Overflow type to use. *\/$/;"	m	struct:bitfieldOp	file:
 p	ziplist.c	/^    unsigned char *p;$/;"	m	struct:zlentry	file:
+p1	redis.py	/^        p1 = Popen([PATH], shell=True, stdin=PIPE)$/;"	v
+p1	redis.py	/^p1 = Popen([PATH], shell=True, stdin=PIPE)$/;"	v
 pa_head	module.c	/^    struct RedisModulePoolAllocBlock *pa_head;$/;"	m	struct:RedisModuleCtx	typeref:struct:RedisModuleCtx::RedisModulePoolAllocBlock	file:
 parallel_syncs	sentinel.c	/^    int parallel_syncs; \/* How many slaves to reconfigure at same time. *\/$/;"	m	struct:sentinelRedisInstance	file:
 params	help.h	/^  char *params;$/;"	m	struct:commandHelp
@@ -3561,6 +3566,7 @@ randomkeys	redis-benchmark.c	/^    int randomkeys;$/;"	m	struct:config	file:
 randomkeys_keyspacelen	redis-benchmark.c	/^    int randomkeys_keyspacelen;$/;"	m	struct:config	file:
 randptr	redis-benchmark.c	/^    char **randptr;         \/* Pointers to :rand: strings inside the command buf *\/$/;"	m	struct:_client	file:
 randstring	ziplist.c	/^static int randstring(char *target, unsigned int min, unsigned int max) {$/;"	f	file:
+rangeVal	redis.py	/^rangeVal = strength + 1$/;"	v
 rcvbuf	cluster.h	/^    sds rcvbuf;                 \/* Packet reception buffer *\/$/;"	m	struct:clusterLink
 rdbCheckError	redis-check-rdb.c	/^void rdbCheckError(const char *fmt, ...) {$/;"	f
 rdbCheckHandleCrash	redis-check-rdb.c	/^void rdbCheckHandleCrash(int sig, siginfo_t *info, void *secret) {$/;"	f
@@ -3570,7 +3576,7 @@ rdbCheckSetError	redis-check-rdb.c	/^void rdbCheckSetError(const char *fmt, ...)
 rdbCheckSetupSignals	redis-check-rdb.c	/^void rdbCheckSetupSignals(void) {$/;"	f
 rdbCheckThenExit	rdb.c	/^void rdbCheckThenExit(int linenum, char *reason, ...) {$/;"	f
 rdbEncodeInteger	rdb.c	/^int rdbEncodeInteger(long long value, unsigned char *enc) {$/;"	f
-rdbExitReportCorruptRDB	rdb.c	44;"	d	file:
+rdbExitReportCorruptRDB	rdb.c	46;"	d	file:
 rdbGenericLoadStringObject	rdb.c	/^void *rdbGenericLoadStringObject(rio *rdb, int flags, size_t *lenptr) {$/;"	f
 rdbIsObjectType	rdb.h	93;"	d
 rdbLoad	rdb.c	/^int rdbLoad(char *filename) {$/;"	f
@@ -4316,7 +4322,13 @@ stopLoading	rdb.c	/^void stopLoading(void) {$/;"	f
 stop_writes_on_bgsave_err	server.h	/^    int stop_writes_on_bgsave_err;  \/* Don't allow writes if can't BGSAVE *\/$/;"	m	struct:redisServer
 str	module.c	/^        const char *str; \/* String pointer for string and error replies. This$/;"	m	union:RedisModuleCallReply::__anon23	file:
 strEncoding	object.c	/^char *strEncoding(int encoding) {$/;"	f
+strength	redis.py	/^strength = 10000$/;"	v
 stress	ziplist.c	/^static void stress(int pos, int num, int maxsize, int dnum) {$/;"	f	file:
+string	redis.py	/^        string = "sadd myhash key"$/;"	v
+string	redis.py	/^string = "sadd myhash key"$/;"	v
+string1	redis.py	/^        string1 = ""$/;"	v
+string1	redis.py	/^    string1 = string1 + string + str(i) + " \\n"$/;"	v
+string1	redis.py	/^string1 = ""$/;"	v
 string2l	util.c	/^int string2l(const char *s, size_t slen, long *lval) {$/;"	f
 string2ld	util.c	/^int string2ld(const char *s, size_t slen, long double *dp) {$/;"	f
 string2ll	util.c	/^int string2ll(const char *s, size_t slen, long long *value) {$/;"	f
@@ -4324,7 +4336,7 @@ stringObjectLen	object.c	/^size_t stringObjectLen(robj *o) {$/;"	f
 stringmatch	util.c	/^int stringmatch(const char *pattern, const char *string, int nocase) {$/;"	f
 stringmatchlen	util.c	/^int stringmatchlen(const char *pattern, int patternLen,$/;"	f
 strlenCommand	t_string.c	/^void strlenCommand(client *c) {$/;"	f
-strtold	object.c	36;"	d	file:
+strtold	object.c	38;"	d	file:
 subject	server.h	/^    robj *subject;$/;"	m	struct:__anon17
 subject	server.h	/^    robj *subject;$/;"	m	struct:__anon19
 subject	server.h	/^    robj *subject;$/;"	m	struct:__anon20
@@ -4378,6 +4390,7 @@ tilt_start_time	sentinel.c	/^    mstime_t tilt_start_time;       \/* When TITL s
 time	bio.c	/^    time_t time; \/* Time at which the job was created. *\/$/;"	m	struct:bio_job	file:
 time	cluster.h	/^    mstime_t time;             \/* Time of the last report from this node. *\/$/;"	m	struct:clusterNodeFailReport
 time	latency.h	/^    int32_t time; \/* We don't use time_t to force 4 bytes usage everywhere. *\/$/;"	m	struct:latencySample
+time	redis.py	/^import time$/;"	i
 time	slowlog.h	/^    time_t time;        \/* Unix time at which the query was executed. *\/$/;"	m	struct:slowlogEntry
 timeCommand	server.c	/^void timeCommand(client *c) {$/;"	f
 timeEventHead	ae.h	/^    aeTimeEvent *timeEventHead;$/;"	m	struct:aeEventLoop
@@ -4422,7 +4435,7 @@ u64	dict.h	/^        uint64_t u64;$/;"	m	union:dictEntry::__anon32
 u8	lzfP.h	/^typedef unsigned char u8;$/;"	t
 u_int	solarisfixes.h	50;"	d
 u_int32_t	solarisfixes.h	51;"	d
-ulong	libchash.h	/^typedef unsigned long ulong;$/;"	t
+ulong	libchash.h	120;"	d
 uname_S	Makefile	/^uname_S := $(shell sh -c 'uname -s 2>\/dev\/null || echo not')$/;"	m
 uname_S	modules/Makefile	/^uname_S := $(shell sh -c 'uname -s 2>\/dev\/null || echo not')$/;"	m
 unblockClient	blocked.c	/^void unblockClient(client *c) {$/;"	f

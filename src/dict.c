@@ -519,7 +519,7 @@ void dictRelease(dict *d)
 {
     _dictClear(d,&d->ht[0],NULL);
     _dictClear(d,&d->ht[1],NULL);
-    FreeHashTable(d->spmHT);
+    //ClearHashTable(d->spmHT);
     zfree(d);
 }
 
