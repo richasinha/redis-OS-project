@@ -44,28 +44,37 @@ extern int sparseInUse;
  * implementations that should instead rely on lookupKeyRead(),
  * lookupKeyWrite() and lookupKeyReadWithFlags(). */
 robj *lookupKey(redisDb *db, robj *key, int flags) {
-    dictEntry *de = dictFind(db->dict,key->ptr);
-    if (de) {
-        robj *val = dictGetVal(de);
+    if(!sparseInUse) {
+        dictEntry *de = dictFind(db->dict,key->ptr);
+        if (de) {
+            robj *val = dictGetVal(de);
 
-        /* Update the access time for the ageing algorithm.
-         * Don't do it if we have a saving child, as this will trigger
-         * a copy on write madness. */
-        if (server.rdb_child_pid == -1 &&
-            server.aof_child_pid == -1 &&
-            !(flags & LOOKUP_NOTOUCH))
-        {
-            if (server.maxmemory_policy & MAXMEMORY_FLAG_LFU) {
-                unsigned long ldt = val->lru >> 8;
-                unsigned long counter = LFULogIncr(val->lru & 255);
-                val->lru = (ldt << 8) | counter;
-            } else {
-                val->lru = LRU_CLOCK();
+            /* Update the access time for the ageing algorithm.
+             * Don't do it if we have a saving child, as this will trigger
+             * a copy on write madness. */
+            if (server.rdb_child_pid == -1 &&
+                server.aof_child_pid == -1 &&
+                !(flags & LOOKUP_NOTOUCH))
+            {
+                if (server.maxmemory_policy & MAXMEMORY_FLAG_LFU) {
+                    unsigned long ldt = val->lru >> 8;
+                    unsigned long counter = LFULogIncr(val->lru & 255);
+                    val->lru = (ldt << 8) | counter;
+                } else {
+                    val->lru = LRU_CLOCK();
+                }
             }
+            return val;
+        } else {
+            return NULL;
         }
-        return val;
     } else {
-        return NULL;
+        robj* value;
+        dict* d = db->dict;
+        HTItem *item;
+        item = HashFind(d->spmHT, PTR_KEY(d->spmHT, key->ptr));
+        value = item->data;
+        return value;
     }
 }
 
@@ -195,14 +204,28 @@ void dbOverwrite(redisDb *db, robj *key, robj *val) {
  * 2) clients WATCHing for the destination key notified.
  * 3) The expire time of the key is reset (the key is made persistent). */
 void setKey(redisDb *db, robj *key, robj *val) {
-    if (lookupKeyWrite(db,key) == NULL) {
-        dbAdd(db,key,val);
+    if(!sparseInUse) {
+        if (lookupKeyWrite(db,key) == NULL) {
+            dbAdd(db,key,val);
+        } else {
+            dbOverwrite(db,key,val);
+        }
+        incrRefCount(val);
+        removeExpire(db,key);
+        signalModifiedKey(db,key);
     } else {
-        dbOverwrite(db,key,val);
+        dict* d = db->dict;
+        HTItem *bck;
+        sds value;
+        bck = HashInsert(d->spmHT, PTR_KEY(d->spmHT,key->ptr),val->ptr);
+        bck = HashFind(d->spmHT, PTR_KEY(d->spmHT,key->ptr));
+        if(bck) {
+            value = bck->data; 
+            //serverLog(LL_NOTICE, "Done!");
+        }
+        else
+            serverLog(LL_NOTICE, "Not done!");
     }
-    incrRefCount(val);
-    removeExpire(db,key);
-    signalModifiedKey(db,key);
 }
 
 int dbExists(redisDb *db, robj *key) {
