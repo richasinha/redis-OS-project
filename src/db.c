@@ -73,7 +73,7 @@ robj *lookupKey(redisDb *db, robj *key, int flags) {
         dict* d = db->dict;
         HTItem *item;
         item = HashFind(d->spmHT, PTR_KEY(d->spmHT, key->ptr));
-        value = item->data;
+        value->ptr = item->data;
         return value;
     }
 }

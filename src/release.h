@@ -1,3 +1,3 @@
-#define REDIS_GIT_SHA1 "8047e9a7"
-#define REDIS_GIT_DIRTY "153"
-#define REDIS_BUILD_ID "localhost.localdomain-1480401664"
+#define REDIS_GIT_SHA1 "460cf0b5"
+#define REDIS_GIT_DIRTY "71"
+#define REDIS_BUILD_ID "localhost.localdomain-1480473977"

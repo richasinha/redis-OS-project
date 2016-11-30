@@ -30,7 +30,7 @@
 #include "server.h"
 #include <math.h>
 
-int sparseInUse = 0;
+int sparseInUse = 1;
 
 /*-----------------------------------------------------------------------------
  * Hash type API

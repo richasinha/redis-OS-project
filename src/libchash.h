@@ -140,7 +140,7 @@
 #define JUMP(key, offset)   ( ++(offset) )  /* ( 1 ) for linear hashing */
 #endif
 #ifndef Table
-#define Table(x)             Sparse##x//Dense##x       /* Dense##x for dense tables */
+#define Table(x)            Dense##x //Sparse##x       /* Dense##x for dense tables */
 #endif
 #ifndef FAST_DELETE
 #define FAST_DELETE         0      /* if it's 1, we never shrink the ht */
