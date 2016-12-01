@@ -30,6 +30,8 @@
 #include "server.h"
 #include <math.h> /* isnan(), isinf() */
 
+extern int sparseInUse;
+
 /*-----------------------------------------------------------------------------
  * String Commands
  *----------------------------------------------------------------------------*/
@@ -159,11 +161,12 @@ int getGenericCommand(client *c) {
 
     if ((o = lookupKeyReadOrReply(c,c->argv[1],shared.nullbulk)) == NULL)
         return C_OK;
-
+    
     if (o->type != OBJ_STRING) {
         addReply(c,shared.wrongtypeerr);
         return C_ERR;
     } else {
+        //printf("\nRedis key val is %s\n",o->ptr);    
         addReplyBulk(c,o);
         return C_OK;
     }

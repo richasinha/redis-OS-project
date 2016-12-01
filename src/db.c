@@ -44,6 +44,7 @@ extern int sparseInUse;
  * implementations that should instead rely on lookupKeyRead(),
  * lookupKeyWrite() and lookupKeyReadWithFlags(). */
 robj *lookupKey(redisDb *db, robj *key, int flags) {
+    //printf("heyyyyyyyyyy\n");
     if(!sparseInUse) {
         dictEntry *de = dictFind(db->dict,key->ptr);
         if (de) {
@@ -69,11 +70,37 @@ robj *lookupKey(redisDb *db, robj *key, int flags) {
             return NULL;
         }
     } else {
+
+        //printf("whyyyyyyyyyyyyy\n");
         robj* value;
+        value =  zmalloc( sizeof(robj) );
+        value->refcount = 1;
+        #if 0
+        if (server.rdb_child_pid == -1 &&
+            server.aof_child_pid == -1 &&
+            !(flags & LOOKUP_NOTOUCH))
+        {
+            if (server.maxmemory_policy & MAXMEMORY_FLAG_LFU) {
+                unsigned long ldt = value->lru >> 8;
+                unsigned long counter = LFULogIncr(value->lru & 255);
+                value->lru = (ldt << 8) | counter;
+            } else {
+                value->lru = LRU_CLOCK();
+            }
+        }
+        #endif
+        value->encoding = OBJ_ENCODING_EMBSTR;
+        value->type = OBJ_STRING; 
         dict* d = db->dict;
         HTItem *item;
+        //printf("beforeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n");
         item = HashFind(d->spmHT, PTR_KEY(d->spmHT, key->ptr));
-        value->ptr = item->data;
+        //printf("afterrrrrrrrrrrrrrrrr");
+        //printf( "pointer item %p\n", item );
+        //printf( "string  %s\n", item->data );
+         value->ptr = item->data;
+        //printf("yooooooooooooooooooo\n");
+        // printf("\nFunc : %s ___ Pointer %p, value %s\n",__func__,value,value->ptr);
         return value;
     }
 }
@@ -129,6 +156,8 @@ robj *lookupKeyReadWithFlags(redisDb *db, robj *key, int flags) {
         }
     }
     val = lookupKey(db,key,flags);
+    
+    //printf("\n val is %s\n",val->ptr); 
     if (val == NULL)
         server.stat_keyspace_misses++;
     else
@@ -222,6 +251,8 @@ void setKey(redisDb *db, robj *key, robj *val) {
         if(bck) {
             value = bck->data; 
             //serverLog(LL_NOTICE, "Done!");
+            //printf("\nValue is %s\n",value);
+            incrRefCount(val);
         }
         else
             serverLog(LL_NOTICE, "Not done!");

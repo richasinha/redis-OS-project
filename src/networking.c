@@ -31,6 +31,8 @@
 #include <sys/uio.h>
 #include <math.h>
 
+extern int sparseInUse;
+
 static void setProtocolError(client *c, int pos);
 
 /* Return the size consumed from the allocator, for the specified SDS string,
@@ -210,6 +212,7 @@ int _addReplyToBuffer(client *c, const char *s, size_t len) {
     /* Check that the buffer has enough space available for this string. */
     if (len > available) return C_ERR;
 
+    //printf("\n Func : %s %d robj : %s\n",__func__,__LINE__, s);
     memcpy(c->buf+c->bufpos,s,len);
     c->bufpos+=len;
     return C_OK;
@@ -222,10 +225,12 @@ void _addReplyObjectToList(client *c, robj *o) {
         sds s = sdsdup(o->ptr);
         listAddNodeTail(c->reply,s);
         c->reply_bytes += sdslen(s);
+        //printf("\n Func : %s %d robj : %s\n",__func__,__LINE__, s);
     } else {
         listNode *ln = listLast(c->reply);
         sds tail = listNodeValue(ln);
 
+        //printf("\n Func : %s %d robj : %s\n",__func__,__LINE__, o->ptr);
         /* Append to this object when possible. If tail == NULL it was
          * set via addDeferredMultiBulkLength(). */
         if (tail && sdslen(tail)+sdslen(o->ptr) <= PROTO_REPLY_CHUNK_BYTES) {
@@ -238,6 +243,7 @@ void _addReplyObjectToList(client *c, robj *o) {
             c->reply_bytes += sdslen(s);
         }
     }
+    //printf("\n Am I here ?Func : %s %d robj : %s\n",__func__,__LINE__, o->ptr);
     asyncCloseClientOnOutputBufferLimitReached(c);
 }
 
@@ -313,6 +319,7 @@ void addReply(client *c, robj *obj) {
      * we'll be able to send the object to the client without
      * messing with its page. */
     if (sdsEncodedObject(obj)) {
+        //printf("\nFunc %s : Object pointer %s\n",__func__,obj->ptr);
         if (_addReplyToBuffer(c,obj->ptr,sdslen(obj->ptr)) != C_OK)
             _addReplyObjectToList(c,obj);
     } else if (obj->encoding == OBJ_ENCODING_INT) {
@@ -324,8 +331,10 @@ void addReply(client *c, robj *obj) {
             int len;
 
             len = ll2string(buf,sizeof(buf),(long)obj->ptr);
-            if (_addReplyToBuffer(c,buf,len) == C_OK)
+            if (_addReplyToBuffer(c,buf,len) == C_OK) {
+                //printf("\nExiting %s\n %d",__func__,__LINE__);
                 return;
+            }
             /* else... continue with the normal code path, but should never
              * happen actually since we verified there is room. */
         }
@@ -336,6 +345,7 @@ void addReply(client *c, robj *obj) {
     } else {
         serverPanic("Wrong obj->encoding in addReply()");
     }
+    //printf("\nExiting %s\n",__func__);
 }
 
 void addReplySds(client *c, sds s) {
@@ -509,6 +519,7 @@ void addReplyMultiBulkLen(client *c, long length) {
 void addReplyBulkLen(client *c, robj *obj) {
     size_t len;
 
+    //printf("\nFunc %s : Object pointer %s\n",__func__,obj->ptr);
     if (sdsEncodedObject(obj)) {
         len = sdslen(obj->ptr);
     } else {
@@ -533,6 +544,7 @@ void addReplyBulkLen(client *c, robj *obj) {
 
 /* Add a Redis Object as a bulk reply */
 void addReplyBulk(client *c, robj *obj) {
+//    printf("\nFunc %s : Object pointer %s\n",__func__,obj->ptr);
     addReplyBulkLen(c,obj);
     addReply(c,obj);
     addReply(c,shared.crlf);
