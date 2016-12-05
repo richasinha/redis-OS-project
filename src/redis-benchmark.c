@@ -729,13 +729,13 @@ int main(int argc, const char **argv) {
             benchmark("PING_BULK",cmd,len);
             free(cmd);
         }
-#if 0
         if (test_is_selected("set")) {
             len = redisFormatCommand(&cmd,"SET key:__rand_int__ %s",data);
             benchmark("SET",cmd,len);
             free(cmd);
         }
 
+#if 0
         if (test_is_selected("get")) {
             len = redisFormatCommand(&cmd,"GET key:__rand_int__");
             benchmark("GET",cmd,len);
@@ -771,14 +771,12 @@ int main(int argc, const char **argv) {
             benchmark("RPOP",cmd,len);
             free(cmd);
         }
-#endif
         if (test_is_selected("sadd")) {
             len = redisFormatCommand(&cmd,
                 "SADD myset element:__rand_int__");
             benchmark("SADD",cmd,len);
             //free(cmd);
         }
-#if 0
         if (test_is_selected("spop")) {
             len = redisFormatCommand(&cmd,"SPOP myset");
             benchmark("SPOP",cmd,len);

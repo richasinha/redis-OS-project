@@ -93,15 +93,12 @@ robj *lookupKey(redisDb *db, robj *key, int flags) {
         value->type = OBJ_STRING; 
         dict* d = db->dict;
         HTItem *item;
-        //printf("beforeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n");
         item = HashFind(d->spmHT, PTR_KEY(d->spmHT, key->ptr));
-        //printf("afterrrrrrrrrrrrrrrrr");
-        //printf( "pointer item %p\n", item );
-        //printf( "string  %s\n", item->data );
-         value->ptr = item->data;
-        //printf("yooooooooooooooooooo\n");
-        // printf("\nFunc : %s ___ Pointer %p, value %s\n",__func__,value,value->ptr);
-        return value;
+        if(item) {
+            value->ptr = item->data;
+            return value;
+        } else
+            return NULL;
     }
 }
 
