@@ -77,7 +77,7 @@ BITOP_XOR	bitops.c	390;"	d	file:
 BLOCKED_LIST	server.h	246;"	d
 BLOCKED_NONE	server.h	245;"	d
 BLOCKED_WAIT	server.h	247;"	d
-BM_BYTES	libchash.c	179;"	d	file:
+BM_BYTES	libchash.c	180;"	d	file:
 BUFSIZE	sha1.c	201;"	d	file:
 BYTE_ORDER	config.h	149;"	d
 BYTE_ORDER	config.h	159;"	d
@@ -91,7 +91,7 @@ CHECK_INPUT	lzfP.h	121;"	d
 CHILD_INFO_MAGIC	server.h	813;"	d
 CHILD_INFO_TYPE_AOF	server.h	815;"	d
 CHILD_INFO_TYPE_RDB	server.h	814;"	d
-CLEAR_BITMAP	libchash.c	188;"	d	file:
+CLEAR_BITMAP	libchash.c	189;"	d	file:
 CLIENTS_CRON_MIN_ITERATIONS	server.c	833;"	d	file:
 CLIENT_ASKING	server.h	221;"	d
 CLIENT_BLOCKED	server.h	215;"	d
@@ -284,7 +284,7 @@ CONFIG_MIN_RESERVED_FDS	server.h	148;"	d
 CONFIG_REPL_BACKLOG_MIN_SIZE	server.h	108;"	d
 CONFIG_REPL_SYNCIO_TIMEOUT	server.h	298;"	d
 CONFIG_RUN_ID_SIZE	server.h	104;"	d
-COPY_KEY	libchash.c	150;"	d	file:
+COPY_KEY	libchash.c	151;"	d	file:
 CRC64_H	crc64.h	2;"	d
 CRON_DBS_PER_CALL	server.h	87;"	d
 C_ERR	server.h	76;"	d
@@ -307,7 +307,7 @@ DICT_HT_INITIAL_SIZE	dict.h	102;"	d
 DICT_NOTUSED	dict.h	46;"	d
 DICT_OK	dict.h	42;"	d
 DICT_STATS_VECTLEN	dict.c	1046;"	d	file:
-DIV_NUM_ENTRIES	libchash.c	182;"	d	file:
+DIV_NUM_ENTRIES	libchash.c	183;"	d	file:
 D_R	geohash_helper.c	42;"	d	file:
 Delete	libchash.c	/^static int Delete(HashTable *ht, ulong key, int fShrink, int fLastFindSet)$/;"	f	file:
 DenseAllocate	libchash.c	/^static ulong DenseAllocate(DenseBin **pbin, ulong cBuckets)$/;"	f	file:
@@ -347,7 +347,7 @@ FINAL_CFLAGS	Makefile	/^FINAL_CFLAGS=$(STD) $(WARN) $(OPT) $(DEBUG) $(CFLAGS) $(
 FINAL_LDFLAGS	Makefile	/^FINAL_LDFLAGS=$(LDFLAGS) $(REDIS_LDFLAGS) $(DEBUG)$/;"	m
 FINAL_LIBS	Makefile	/^FINAL_LIBS=-lm$/;"	m
 FLAGS	Makefile	/^	echo CFLAGS=$(CFLAGS) >> .make-settings$/;"	m
-FREE_KEY	libchash.c	165;"	d	file:
+FREE_KEY	libchash.c	166;"	d	file:
 FRST	lzf_c.c	48;"	d	file:
 Find	libchash.c	/^static HTItem *Find(HashTable *ht, ulong key, ulong *piEmpty)$/;"	f	file:
 FreeHashTable	libchash.c	/^void FreeHashTable(HashTable *ht)$/;"	f
@@ -516,9 +516,9 @@ IS_BCK_DELETED	libchash.h	163;"	d
 IS_BCK_DELETED	libchash.h	167;"	d
 Insert	libchash.c	/^static HTItem *Insert(HashTable *ht, ulong key, ulong data, int fOverwrite)$/;"	f	file:
 JUMP	libchash.h	140;"	d
-KEY_CMP	libchash.c	143;"	d	file:
+KEY_CMP	libchash.c	144;"	d	file:
 KEY_PTR	libchash.h	220;"	d
-KEY_TRUNC	libchash.c	133;"	d	file:
+KEY_TRUNC	libchash.c	134;"	d	file:
 LATENCY_DIST_DEFAULT_INTERVAL	redis-cli.c	1511;"	d	file:
 LATENCY_GRAPH_COLS	latency.c	515;"	d	file:
 LATENCY_HISTORY_DEFAULT_INTERVAL	redis-cli.c	1464;"	d	file:
@@ -544,9 +544,9 @@ LL_NOTICE	server.h	310;"	d
 LL_RAW	server.h	312;"	d
 LL_VERBOSE	server.h	309;"	d
 LL_WARNING	server.h	311;"	d
-LOAD_AND_RETURN	libchash.c	206;"	d	file:
+LOAD_AND_RETURN	libchash.c	207;"	d	file:
 LOG_BM_WORDS	libchash.h	135;"	d
-LOG_LOW_BIN_SIZE	libchash.c	377;"	d	file:
+LOG_LOW_BIN_SIZE	libchash.c	378;"	d	file:
 LOG_MAX_LEN	server.h	92;"	d
 LOG_WORD_SIZE	libchash.h	126;"	d
 LOG_WORD_SIZE	libchash.h	128;"	d
@@ -595,7 +595,7 @@ MAXMEMORY_VOLATILE_LFU	server.h	362;"	d
 MAXMEMORY_VOLATILE_LRU	server.h	361;"	d
 MAXMEMORY_VOLATILE_RANDOM	server.h	364;"	d
 MAXMEMORY_VOLATILE_TTL	server.h	363;"	d
-MAX_ACCEPTS_PER_CALL	networking.c	591;"	d	file:
+MAX_ACCEPTS_PER_CALL	networking.c	603;"	d	file:
 MAX_CLUSTER_ACCEPTS_PER_CALL	cluster.c	588;"	d	file:
 MAX_EVENT_BATCHSZ	ae_evport.c	66;"	d	file:
 MAX_LIT	lzf_c.c	74;"	d	file:
@@ -613,10 +613,10 @@ MIGRATE_SOCKET_CACHE_TTL	cluster.c	4633;"	d	file:
 MIN_COMPRESS_BYTES	quicklist.c	54;"	d	file:
 MIN_COMPRESS_IMPROVE	quicklist.c	59;"	d	file:
 MIN_HASH_SIZE	libchash.h	155;"	d
-MOD2	libchash.c	181;"	d	file:
-MODBIT	libchash.c	184;"	d	file:
+MOD2	libchash.c	182;"	d	file:
+MODBIT	libchash.c	185;"	d	file:
 MODULE_LOOKUP_CACHE_SIZE	module.c	2577;"	d	file:
-MOD_NUM_ENTRIES	libchash.c	183;"	d	file:
+MOD_NUM_ENTRIES	libchash.c	184;"	d	file:
 MUL	rand.c	50;"	d	file:
 ModuleTypeNameCharSet	module.c	/^const char *ModuleTypeNameCharSet =$/;"	v
 MurmurHash64A	hyperloglog.c	/^uint64_t MurmurHash64A (const void * key, int len, unsigned int seed) {$/;"	f
@@ -638,7 +638,7 @@ NOTIFY_LIST	server.h	410;"	d
 NOTIFY_SET	server.h	411;"	d
 NOTIFY_STRING	server.h	409;"	d
 NOTIFY_ZSET	server.h	413;"	d
-NULL_TERMINATED	libchash.c	139;"	d	file:
+NULL_TERMINATED	libchash.c	140;"	d	file:
 NextPow2	libchash.c	/^static ulong NextPow2(ulong x)    \/* returns next power of 2 > x, or 2^31 *\/$/;"	f	file:
 OBJ_COMPUTE_SIZE_DEF_SAMPLES	object.c	714;"	d	file:
 OBJ_ENCODING_EMBSTR	server.h	542;"	d
@@ -663,12 +663,12 @@ OBJ_LIST_COMPRESS_DEPTH	server.h	342;"	d
 OBJ_LIST_MAX_ZIPLIST_SIZE	server.h	341;"	d
 OBJ_MODULE	server.h	455;"	d
 OBJ_SET	server.h	440;"	d
-OBJ_SET_EX	t_string.c	64;"	d	file:
+OBJ_SET_EX	t_string.c	66;"	d	file:
 OBJ_SET_MAX_INTSET_ENTRIES	server.h	336;"	d
-OBJ_SET_NO_FLAGS	t_string.c	61;"	d	file:
-OBJ_SET_NX	t_string.c	62;"	d	file:
-OBJ_SET_PX	t_string.c	65;"	d	file:
-OBJ_SET_XX	t_string.c	63;"	d	file:
+OBJ_SET_NO_FLAGS	t_string.c	63;"	d	file:
+OBJ_SET_NX	t_string.c	64;"	d	file:
+OBJ_SET_PX	t_string.c	67;"	d	file:
+OBJ_SET_XX	t_string.c	65;"	d	file:
 OBJ_SHARED_BULKHDR_LEN	server.h	91;"	d
 OBJ_SHARED_INTEGERS	server.h	90;"	d
 OBJ_SHARED_REFCOUNT	server.h	550;"	d
@@ -687,6 +687,7 @@ OUTPUT_CSV	redis-cli.c	61;"	d	file:
 OUTPUT_RAW	redis-cli.c	60;"	d	file:
 OUTPUT_STANDARD	redis-cli.c	59;"	d	file:
 PATH	redis.py	/^PATH = "\/home\/richie_rich\/OSProj\/redis-OS-project\/src\/redis-cli"$/;"	v
+PATH	setRedis.py	/^PATH = "\/home\/richie_rich\/OSProj\/redis-OS-project\/src\/redis-cli"$/;"	v
 PDP_ENDIAN	config.h	143;"	d
 PIPEMODE_WRITE_LOOP_MAX_BYTES	redis-cli.c	1769;"	d	file:
 PREFIX	Makefile	/^PREFIX?=\/usr\/local$/;"	m
@@ -783,7 +784,7 @@ RDB_TYPE_ZSET	rdb.h	77;"	d
 RDB_TYPE_ZSET_2	rdb.h	79;"	d
 RDB_TYPE_ZSET_ZIPLIST	rdb.h	87;"	d
 RDB_VERSION	rdb.h	41;"	d
-READ_UL	libchash.c	191;"	d	file:
+READ_UL	libchash.c	192;"	d	file:
 REDISMODULE_AM_FREED	module.c	66;"	d	file:
 REDISMODULE_AM_KEY	module.c	63;"	d	file:
 REDISMODULE_AM_REPLY	module.c	65;"	d	file:
@@ -1111,15 +1112,15 @@ SET3	rand.c	61;"	d	file:
 SETLOW	rand.c	62;"	d	file:
 SET_BCK_DELETED	libchash.h	164;"	d
 SET_BCK_DELETED	libchash.h	168;"	d
-SET_BITMAP	libchash.c	187;"	d	file:
+SET_BITMAP	libchash.c	188;"	d	file:
 SET_ERRNO	lzf_d.c	40;"	d	file:
 SET_ERRNO	lzf_d.c	43;"	d	file:
 SET_OP_DIFF	server.h	349;"	d
-SET_OP_DIFF	t_set.c	951;"	d	file:
+SET_OP_DIFF	t_set.c	949;"	d	file:
 SET_OP_INTER	server.h	350;"	d
-SET_OP_INTER	t_set.c	952;"	d	file:
+SET_OP_INTER	t_set.c	950;"	d	file:
 SET_OP_UNION	server.h	348;"	d
-SET_OP_UNION	t_set.c	950;"	d	file:
+SET_OP_UNION	t_set.c	948;"	d	file:
 SHA1Final	sha1.c	/^void SHA1Final(unsigned char digest[20], SHA1_CTX* context)$/;"	f
 SHA1HANDSOFF	sha1.c	22;"	d	file:
 SHA1Init	sha1.c	/^void SHA1Init(SHA1_CTX* context)$/;"	f
@@ -1150,14 +1151,14 @@ SORT_OP_GET	server.h	305;"	d
 SPARKLINE_FILL	sparkline.h	47;"	d
 SPARKLINE_LOG_SCALE	sparkline.h	48;"	d
 SPARKLINE_NO_FLAGS	sparkline.h	46;"	d
-SPARSE_BUCKET	libchash.c	473;"	d	file:
-SPARSE_GROUPS	libchash.c	378;"	d	file:
-SPARSE_POS_TO_OFFSET	libchash.c	472;"	d	file:
-SPOP_MOVE_STRATEGY_MUL	t_set.c	427;"	d	file:
+SPARSE_BUCKET	libchash.c	474;"	d	file:
+SPARSE_GROUPS	libchash.c	379;"	d	file:
+SPARSE_POS_TO_OFFSET	libchash.c	473;"	d	file:
+SPOP_MOVE_STRATEGY_MUL	t_set.c	425;"	d	file:
 SPT	setproctitle.c	/^} SPT;$/;"	v	typeref:struct:__anon3	file:
 SPT_MAXTITLE	setproctitle.c	213;"	d	file:
 SPT_MIN	setproctitle.c	67;"	d	file:
-SRANDMEMBER_SUB_STRATEGY_MUL	t_set.c	641;"	d	file:
+SRANDMEMBER_SUB_STRATEGY_MUL	t_set.c	639;"	d	file:
 SRCCOLOR	Makefile	/^SRCCOLOR="\\033[33m"$/;"	m
 SRI_FAILOVER_IN_PROGRESS	sentinel.c	61;"	d	file:
 SRI_FORCE_FAILOVER	sentinel.c	67;"	d	file:
@@ -1195,7 +1196,7 @@ SYNC_CMD_WRITE	replication.c	1182;"	d	file:
 SparseAllocate	libchash.c	/^static ulong SparseAllocate(SparseBin **pbinSparse, ulong cBuckets)$/;"	f	file:
 SparseBin	libchash.c	/^typedef struct SparseBin {$/;"	s	file:
 SparseBin	libchash.c	/^} SparseBin;$/;"	t	typeref:struct:SparseBin	file:
-SparseBucket	libchash.c	361;"	d	file:
+SparseBucket	libchash.c	362;"	d	file:
 SparseFind	libchash.c	/^static SparseBucket *SparseFind(SparseBin *binSparse, ulong location)$/;"	f	file:
 SparseFirstBucket	libchash.c	/^static SparseBucket *SparseFirstBucket(SparseIterator *iter,$/;"	f	file:
 SparseFree	libchash.c	/^static SparseBin *SparseFree(SparseBin *binSparse, ulong cBuckets)$/;"	f	file:
@@ -1210,7 +1211,7 @@ SparseWrite	libchash.c	/^static void SparseWrite(FILE *fp, SparseBin *binSparse,
 T	modules/testmodule.c	158;"	d	file:
 TD	Makefile	/^	echo STD=$(STD) >> .make-settings$/;"	m
 TEST	quicklist.c	1444;"	d	file:
-TEST_BITMAP	libchash.c	186;"	d	file:
+TEST_BITMAP	libchash.c	187;"	d	file:
 TEST_DESC	quicklist.c	1445;"	d	file:
 THPGetAnonHugePagesSize	latency.c	/^int THPGetAnonHugePagesSize(void) {$/;"	f
 THPIsEnabled	latency.c	/^int THPIsEnabled(void) {$/;"	f
@@ -1258,8 +1259,8 @@ WORD_AT	libchash.c	849;"	d	file:
 WORD_AT	libchash.c	851;"	d	file:
 WORD_AT	libchash.c	873;"	d	file:
 WORD_AT	libchash.c	875;"	d	file:
-WORD_ROUND	libchash.c	138;"	d	file:
-WRITE_UL	libchash.c	198;"	d	file:
+WORD_ROUND	libchash.c	139;"	d	file:
+WRITE_UL	libchash.c	199;"	d	file:
 X0	rand.c	54;"	d	file:
 X1	rand.c	55;"	d	file:
 X2	rand.c	56;"	d	file:
@@ -2043,6 +2044,8 @@ count	redis-cli.c	/^    long long count; \/* Number of samples in this interval.
 count	redis.py	/^    count = count + 1$/;"	v
 count	redis.py	/^count = 0$/;"	v
 count	server.h	/^    int count;              \/* Total number of MULTI commands *\/$/;"	m	struct:multiState
+count	setRedis.py	/^    count = count + 1$/;"	v
+count	setRedis.py	/^count = 0$/;"	v
 count	sha1.h	/^    uint32_t count[2];$/;"	m	struct:__anon1
 countKeysInSlot	db.c	/^unsigned int countKeysInSlot(unsigned int hashslot) {$/;"	f
 covered_slots	redis-trib.rb	/^    def covered_slots$/;"	f	class:RedisTrib
@@ -3355,6 +3358,8 @@ owtype	bitops.c	/^    int owtype;         \/* Overflow type to use. *\/$/;"	m	st
 p	ziplist.c	/^    unsigned char *p;$/;"	m	struct:zlentry	file:
 p1	redis.py	/^        p1 = Popen([PATH], shell=True, stdin=PIPE)$/;"	v
 p1	redis.py	/^p1 = Popen([PATH], shell=True, stdin=PIPE)$/;"	v
+p1	setRedis.py	/^        p1 = Popen([PATH], shell=True, stdin=PIPE)$/;"	v
+p1	setRedis.py	/^p1 = Popen([PATH], shell=True, stdin=PIPE)$/;"	v
 pa_head	module.c	/^    struct RedisModulePoolAllocBlock *pa_head;$/;"	m	struct:RedisModuleCtx	typeref:struct:RedisModuleCtx::RedisModulePoolAllocBlock	file:
 parallel_syncs	sentinel.c	/^    int parallel_syncs; \/* How many slaves to reconfigure at same time. *\/$/;"	m	struct:sentinelRedisInstance	file:
 params	help.h	/^  char *params;$/;"	m	struct:commandHelp
@@ -3567,6 +3572,7 @@ randomkeys_keyspacelen	redis-benchmark.c	/^    int randomkeys_keyspacelen;$/;"	m
 randptr	redis-benchmark.c	/^    char **randptr;         \/* Pointers to :rand: strings inside the command buf *\/$/;"	m	struct:_client	file:
 randstring	ziplist.c	/^static int randstring(char *target, unsigned int min, unsigned int max) {$/;"	f	file:
 rangeVal	redis.py	/^rangeVal = strength + 1$/;"	v
+rangeVal	setRedis.py	/^rangeVal = strength + 1$/;"	v
 rcvbuf	cluster.h	/^    sds rcvbuf;                 \/* Packet reception buffer *\/$/;"	m	struct:clusterLink
 rdbCheckError	redis-check-rdb.c	/^void rdbCheckError(const char *fmt, ...) {$/;"	f
 rdbCheckHandleCrash	redis-check-rdb.c	/^void rdbCheckHandleCrash(int sig, siginfo_t *info, void *secret) {$/;"	f
@@ -4322,13 +4328,19 @@ stopLoading	rdb.c	/^void stopLoading(void) {$/;"	f
 stop_writes_on_bgsave_err	server.h	/^    int stop_writes_on_bgsave_err;  \/* Don't allow writes if can't BGSAVE *\/$/;"	m	struct:redisServer
 str	module.c	/^        const char *str; \/* String pointer for string and error replies. This$/;"	m	union:RedisModuleCallReply::__anon23	file:
 strEncoding	object.c	/^char *strEncoding(int encoding) {$/;"	f
-strength	redis.py	/^strength = 10000$/;"	v
+strength	redis.py	/^strength = 100000$/;"	v
+strength	setRedis.py	/^strength = 100000$/;"	v
 stress	ziplist.c	/^static void stress(int pos, int num, int maxsize, int dnum) {$/;"	f	file:
 string	redis.py	/^        string = "sadd myhash key"$/;"	v
 string	redis.py	/^string = "sadd myhash key"$/;"	v
+string	setRedis.py	/^        string = "set key"$/;"	v
+string	setRedis.py	/^string = "set key"$/;"	v
 string1	redis.py	/^        string1 = ""$/;"	v
 string1	redis.py	/^    string1 = string1 + string + str(i) + " \\n"$/;"	v
 string1	redis.py	/^string1 = ""$/;"	v
+string1	setRedis.py	/^        string1 = ""$/;"	v
+string1	setRedis.py	/^    string1 = string1 + string + str(i) + " val" + str(i) + "\\n"$/;"	v
+string1	setRedis.py	/^string1 = ""$/;"	v
 string2l	util.c	/^int string2l(const char *s, size_t slen, long *lval) {$/;"	f
 string2ld	util.c	/^int string2ld(const char *s, size_t slen, long double *dp) {$/;"	f
 string2ll	util.c	/^int string2ll(const char *s, size_t slen, long long *value) {$/;"	f
@@ -4391,6 +4403,7 @@ time	bio.c	/^    time_t time; \/* Time at which the job was created. *\/$/;"	m	s
 time	cluster.h	/^    mstime_t time;             \/* Time of the last report from this node. *\/$/;"	m	struct:clusterNodeFailReport
 time	latency.h	/^    int32_t time; \/* We don't use time_t to force 4 bytes usage everywhere. *\/$/;"	m	struct:latencySample
 time	redis.py	/^import time$/;"	i
+time	setRedis.py	/^import time$/;"	i
 time	slowlog.h	/^    time_t time;        \/* Unix time at which the query was executed. *\/$/;"	m	struct:slowlogEntry
 timeCommand	server.c	/^void timeCommand(client *c) {$/;"	f
 timeEventHead	ae.h	/^    aeTimeEvent *timeEventHead;$/;"	m	struct:aeEventLoop

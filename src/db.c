@@ -44,7 +44,6 @@ extern int sparseInUse;
  * implementations that should instead rely on lookupKeyRead(),
  * lookupKeyWrite() and lookupKeyReadWithFlags(). */
 robj *lookupKey(redisDb *db, robj *key, int flags) {
-    //printf("heyyyyyyyyyy\n");
     if(!sparseInUse) {
         dictEntry *de = dictFind(db->dict,key->ptr);
         if (de) {
@@ -71,7 +70,6 @@ robj *lookupKey(redisDb *db, robj *key, int flags) {
         }
     } else {
 
-        //printf("whyyyyyyyyyyyyy\n");
         robj* value;
         value =  zmalloc( sizeof(robj) );
         value->refcount = 1;
@@ -154,7 +152,6 @@ robj *lookupKeyReadWithFlags(redisDb *db, robj *key, int flags) {
     }
     val = lookupKey(db,key,flags);
     
-    //printf("\n val is %s\n",val->ptr); 
     if (val == NULL)
         server.stat_keyspace_misses++;
     else
@@ -290,12 +287,20 @@ robj *dbRandomKey(redisDb *db) {
 int dbSyncDelete(redisDb *db, robj *key) {
     /* Deleting an entry from the expires dict will not free the sds of
      * the key, because it is shared with the main dictionary. */
-    if (dictSize(db->expires) > 0) dictDelete(db->expires,key->ptr);
-    if (dictDelete(db->dict,key->ptr) == DICT_OK) {
-        if (server.cluster_enabled) slotToKeyDel(key);
-        return 1;
+    if(!sparseInUse) {
+        if (dictSize(db->expires) > 0) dictDelete(db->expires,key->ptr);
+        if (dictDelete(db->dict,key->ptr) == DICT_OK) {
+            if (server.cluster_enabled) slotToKeyDel(key);
+            return 1;
+        } else {
+            return 0;
+        }
     } else {
-        return 0;
+        dict *d = db->dict;
+        if(HashDelete(d->spmHT, PTR_KEY(d->spmHT,key->ptr)) == 1) {
+            return 1;
+        } else
+            return 0;
     }
 }
 

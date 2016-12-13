@@ -6,7 +6,7 @@ PATH = "/home/richie_rich/OSProj/redis-OS-project/src/redis-cli"
 p1 = Popen([PATH], shell=True, stdin=PIPE)
 p1.communicate(input="FLUSHALL")
 
-strength = 100000
+strength = 1000000
 rangeVal = strength + 1
 string = "set key"
 string1 = ""
